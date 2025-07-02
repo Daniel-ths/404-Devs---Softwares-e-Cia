@@ -1,6 +1,42 @@
 // Espera todo o conteúdo do HTML ser carregado antes de executar o script
 document.addEventListener('DOMContentLoaded', () => {
 
+    const themeToggleButton = document.getElementById('theme-toggle');
+    const body = document.body;
+    const themeIcon = themeToggleButton.querySelector('i');
+
+    // Função para definir o tema e o ícone corretos
+    const setTheme = (isDark) => {
+        if (isDark) {
+            body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            body.classList.remove('dark-mode');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+            localStorage.setItem('theme', 'light');
+        }
+    };
+
+    // Evento de clique para o botão
+    themeToggleButton.addEventListener('click', () => {
+        // Verifica se o tema atual é escuro e inverte
+        const isCurrentlyDark = body.classList.contains('dark-mode');
+        setTheme(!isCurrentlyDark);
+    });
+
+    // Verifica o tema salvo no localStorage quando a página carrega
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        setTheme(true);
+    } else {
+        setTheme(false);
+    }
+});
+document.addEventListener('DOMContentLoaded', () => {
+
     // ==================================================
     // FUNCIONALIDADE 1: BOTÃO DE TEMA (DARK/LIGHT MODE)
     // ==================================================
@@ -69,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (cards.length > 0) {
             showCard(0); // Mostra o primeiro card inicialmente
-            setInterval(nextCard, 15000); // Muda de card a cada 15 segundos
+            setInterval(nextCard, 9000); // Muda de card a cada 15 segundos
         }
     }
 

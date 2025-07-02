@@ -1,102 +1,46 @@
-/* =================================
-   PÁGINA DE PORTFÓLIO
-   ================================= */
+/* ==================================================
+   CSS COMPLETO - 404 DEVS
+   Paleta de Cores: Floresta Digital (Padrão)
+   ================================================== */
 
-   .portfolio-section {
-    padding: 4rem 5%;
-}
-
-.portfolio-header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.portfolio-header h1 {
-    font-family: var(--heading-font);
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-color);
-}
-
-.portfolio-header p {
-    font-size: 1.2rem;
-    color: #aaa; /* Um cinza mais suave para o subtítulo */
-}
-
-/* --- Estilos dos Filtros --- */
-.portfolio-filters {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 3rem;
-}
-
-.filter-btn {
-    font-family: var(--body-font);
-    background-color: transparent;
-    border: 1px solid var(--bg-light);
-    color: var(--text-color);
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.filter-btn:hover {
-    background-color: var(--bg-light);
-    color: var(--accent);
-}
-
-/* Estilo do botão ativo */
-.filter-btn.active {
-    background-color: var(--accent);
-    color: var(--bg-dark);
-    border-color: var(--accent);
-    font-weight: bold;
-}
-
-/* --- Grid Completa do Portfólio --- */
-.portfolio-grid-full {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-}
-
-/* Reutilizando e ajustando o card de projeto */
-/* A maior parte do .project-card já foi definida antes */
-.project-card {
-    background-color: var(--bg-light);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease, opacity 0.4s ease; /* Adiciona transição de opacidade */
-    border: 1px solid transparent;
-}
-.project-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent);
-}
-
-/* Classe para esconder /* ------------------------- */
-/* CONFIGURAÇÕES GLOBAIS     */
+/* ------------------------- */
+/* VARIÁVEIS DE CORES        */
 /* ------------------------- */
 :root {
-    --primary-blue: #004aad;
-    --dark-blue: #002752;
-    --accent-green: #28a745;
-    --light-gray: #f8f9fa;
-    --medium-gray: #e9ecef;
-    --dark-gray: #343a40;
-    --text-color: #212529;
-    --heading-font: 'Inter', sans-serif;
-    --body-font: 'Inter', sans-serif;
+    /* TEMA ESCURO (PADRÃO) - FLORESTA DIGITAL */
+    --bg-main: #0A192F;          /* Fundo Principal (Azul Noite) */
+    --bg-card: #172A45;          /* Fundo de Cards/Seções (Azul Marinho) */
+    --accent-primary: #64FFDA;      /* Destaque Principal (Verde Neon) */
+    --accent-secondary: #2E8B57;    /* Destaque Secundário (Verde Floresta) */
+    --text-primary: #CCD6F6;        /* Texto Principal (Quase Branco) */
+    --text-secondary: #8892B0;      /* Texto Secundário (Cinza Azulado) */
+    --heading-color: #E6F1FF;       /* Cor dos Títulos (Branco Brilhante) */
+    --shadow-color: rgba(0, 0, 0, 0.4);
 }
 
+body.light-mode {
+    /* TEMA CLARO (ATIVADO PELO BOTÃO) */
+    --bg-main: #FFFFFF;
+    --bg-card: #f8f9fa;
+    --accent-primary: #007bff;
+    --accent-secondary: #0056b3;
+    --text-primary: #212529;
+    --text-secondary: #495057;
+    --heading-color: #002752;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+
+/* ------------------------- */
+/* CONFIGURAÇÕES GLOBAIS     */
+/* ------------------------- */
 body {
-    font-family: var(--body-font);
-    color: var(--text-color);
+    font-family: 'Lato', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-secondary);
     margin: 0;
-    background-color: #fff;
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 main {
@@ -104,8 +48,9 @@ main {
 }
 
 h1, h2, h3 {
-    font-family: var(--heading-font);
-    color: var(--dark-blue);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--heading-color);
+    font-weight: 700;
 }
 
 h2 {
@@ -126,24 +71,24 @@ section {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 8%;
-    background-color: #ffffff;
-    border-bottom: 1px solid var(--medium-gray);
-    position: fixed; /* Header fixo */
+    background-color: var(--bg-main);
+    border-bottom: 1px solid var(--bg-card);
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     box-sizing: border-box;
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, background-color 0.3s;
 }
 
-.main-header.scrolled { /* Classe adicionada por JS */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+.main-header.scrolled {
+    box-shadow: 0 2px 10px var(--shadow-color);
 }
 
 .logo {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--primary-blue);
+    color: var(--accent-primary);
 }
 
 .main-header nav ul {
@@ -155,7 +100,7 @@ section {
 }
 
 .main-header nav a {
-    color: var(--text-color);
+    color: var(--text-primary);
     text-decoration: none;
     font-size: 1rem;
     font-weight: 600;
@@ -163,264 +108,201 @@ section {
 }
 
 .main-header nav a:hover {
-    color: var(--primary-blue);
+    color: var(--accent-primary);
 }
 
 .main-header nav a.active {
-    color: var(--primary-blue);
-    border-bottom: 2px solid var(--primary-blue);
+    color: var(--accent-primary);
+    border-bottom: 2px solid var(--accent-primary);
     padding-bottom: 5px;
 }
 
 .cta-button {
-    background-color: var(--accent-green);
-    color: white !important;
+    background-color: var(--accent-primary);
+    color: #0A192F !important; /* Cor do texto do botão com bom contraste */
     padding: 0.75rem 1.5rem;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
+    transition: background-color 0.3s ease, opacity 0.3s;
 }
-
 .cta-button:hover {
-    background-color: #218838; /* Verde mais escuro */
+    opacity: 0.85;
 }
 
 /* ------------------------- */
-/* PÁGINA INICIAL            */
+/* BOTÃO DE TEMA             */
 /* ------------------------- */
-.hero-section {
-    background-color: var(--light-gray);
+#theme-toggle {
+    background: none;
+    border: 1px solid var(--text-secondary);
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 1rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s, border-color 0.3s;
+}
+#theme-toggle:hover {
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+/* ------------------------- */
+/* SEÇÃO HERO                */
+/* ------------------------- */
+.hero-section, .hero {
+    background-color: transparent;
     text-align: center;
     padding: 6rem 8%;
 }
 
-.hero-content h1 {
+.hero-content h1, .hero h1 {
     font-size: 3.5rem;
     max-width: 800px;
     margin: 0 auto 1.5rem auto;
 }
 
-.hero-content p {
+.hero-content p, .hero p {
     font-size: 1.2rem;
     max-width: 700px;
     margin: 0 auto 2rem auto;
     line-height: 1.6;
+    color: var(--text-secondary);
 }
 
 .hero-button {
-    background-color: var(--primary-blue);
-    color: white;
+    background-color: var(--accent-primary);
+    color: #0A192F;
     padding: 1rem 2.5rem;
     border-radius: 5px;
     text-decoration: none;
     font-weight: 700;
     font-size: 1.1rem;
-    transition: background-color 0.3s ease;
+    transition: opacity 0.3s ease;
 }
-
 .hero-button:hover {
-    background-color: var(--dark-blue);
+    opacity: 0.85;
 }
 
-.problems-section {
-    background-color: #fff;
-}
 
-.problems-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.problem-card {
-    background-color: var(--light-gray);
-    padding: 2rem;
-    text-align: center;
-    border-radius: 8px;
-    border: 1px solid var(--medium-gray);
-}
-
-.problem-card i {
-    font-size: 3rem;
-    color: var(--primary-blue);
-    margin-bottom: 1rem;
-}
-
-.problem-card h3 {
-    font-size: 1.2rem;
-    color: var(--text-color);
-}
-
-.solutions-preview {
-    background-color: var(--light-gray);
-}
-
-.solutions-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 2rem;
-}
-
-.solution-card {
-    background-color: white;
+/* ------------------------- */
+/* CARDS E GRIDS             */
+/* ------------------------- */
+.project-card, .solution-card {
+    background-color: var(--bg-card);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.solution-card:hover {
+.project-card:hover, .solution-card:hover {
     transform: translateY(-10px);
 }
 
-.solution-card img {
-    width: 100%;
-    display: block;
-}
-
-.solution-card h3 {
+.project-card h3, .solution-card h3 {
     padding: 1.5rem 1.5rem 0.5rem 1.5rem;
     font-size: 1.4rem;
     margin: 0;
+    color: var(--heading-color);
 }
-.solution-card p {
+.project-card p, .solution-card p {
     padding: 0 1.5rem 1rem 1.5rem;
     line-height: 1.6;
+    color: var(--text-secondary);
 }
-.solution-card a {
+.project-card a, .solution-card a {
     display: inline-block;
     padding: 0 1.5rem 1.5rem 1.5rem;
     text-decoration: none;
-    color: var(--primary-blue);
+    color: var(--accent-primary);
     font-weight: 700;
 }
 
+/* SLIDER */
+.slider-container {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+.slider-container .project-card {
+    display: none;
+    width: 100%;
+    animation: fadeEffect 1.5s;
+}
+.slider-container .project-card.active {
+    display: block;
+}
+@keyframes fadeEffect {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+
 /* ------------------------- */
-/* PÁGINA DE SOLUÇÕES        */
+/* PÁGINA DE SOLUÇÕES (CASE STUDY) */
 /* ------------------------- */
 .page-header {
-    background-color: var(--dark-blue);
+    background-color: var(--bg-card);
     text-align: center;
     padding: 4rem 8%;
 }
-.page-header h1 {
-    color: white;
-    font-size: 3rem;
-    margin: 0;
-}
-.page-header p {
-    color: var(--medium-gray);
-    font-size: 1.2rem;
-    margin-top: 0.5rem;
-}
-
 .case-study {
     max-width: 900px;
     margin: 4rem auto;
     padding: 2rem;
-    background-color: white;
+    background-color: var(--bg-card);
     border-radius: 8px;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
-}
-.case-study h2 {
-    text-align: left;
-    border-bottom: 3px solid var(--primary-blue);
-    padding-bottom: 1rem;
-    margin-bottom: 2rem;
-}
-.case-section {
-    margin-bottom: 2.5rem;
 }
 .case-section h3 {
     font-size: 1.6rem;
     margin-bottom: 1rem;
-    color: var(--dark-gray);
+    color: var(--heading-color);
 }
-.gallery-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-}
-.gallery-grid img {
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid var(--medium-gray);
-}
-
-.results-list {
-    list-style: none;
-    padding-left: 0;
-}
-
+.results-list { list-style: none; padding-left: 0; }
 .results-list li {
     font-size: 1.1rem;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
+    color: var(--text-primary);
 }
-
 .results-list i {
-    color: var(--accent-green);
+    color: var(--accent-primary);
     font-size: 1.5rem;
     margin-right: 1rem;
 }
+.result-value {
+    color: var(--accent-primary);
+    font-size: 1.2em;
+}
 
-.tech-tags span {
-    display: inline-block;
-    background-color: var(--medium-gray);
-    color: var(--dark-gray);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: 600;
+/* ------------------------- */
+/* ANIMAÇÕES AO ROLAR        */
+/* ------------------------- */
+.problem-card, .solution-card, .case-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.problem-card.visible, .solution-card.visible, .case-section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ------------------------- */
 /* FOOTER                    */
 /* ------------------------- */
 .main-footer {
-    background-color: var(--dark-blue);
-    color: white;
+    background-color: #061121; /* Um pouco mais escuro que o fundo */
+    color: var(--text-secondary);
     text-align: center;
     padding: 2rem 8%;
-}cards no filtro */
-.project-card.hide {
-    display: none;
-}
-/* CSS para a animação de fade-in ao rolar */
-.problem-card, .solution-card, .case-section {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.problem-card.visible, .solution-card.visible, .case-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-/* --- Estilos do Slider de Projetos --- */
-.slider-container {
-    position: relative;
-    max-width: 400px; /* Largura do card */
-    margin: 0 auto;
-    overflow: hidden;
-    border-radius: 8px;
-}
-
-/* Esconde os cards por padrão e posiciona um sobre o outro */
-.slider-container .project-card {
-    display: none;
-    width: 100%;
-    animation: fadeEffect 1.5s;
-}
-
-/* O card ativo fica visível */
-.slider-container .project-card.active {
-    display: block;
-}
-
-/* Animação de fade */
-@keyframes fadeEffect {
-    from {opacity: .4}
-    to {opacity: 1}
+    margin-top: 4rem;
+    border-top: 1px solid var(--bg-card);
 }
